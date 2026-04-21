@@ -1,9 +1,0 @@
-crewai
-crewai-tools
-langchain-groq
-litellm
-python-dotenv
-ddgs
-langchain-community
-python-docx
-streamlit
