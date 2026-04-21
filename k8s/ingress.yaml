@@ -1,0 +1,98 @@
+# ============================================================
+#  ingress.yaml
+#  Nginx Ingress — path-based routing via EC2 public IP
+#
+#  Access URLs:
+#    http://<EC2-PUBLIC-IP>/manufacturing-creator/
+#    http://<EC2-PUBLIC-IP>/multi-agent-manufacturing/
+#    http://<EC2-PUBLIC-IP>/main-app/
+# ============================================================
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: manufacturing-platform-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+#     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+#     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+#     # Required for Streamlit WebSocket support
+#     nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+#     nginx.ingress.kubernetes.io/configuration-snippet: |
+#       proxy_set_header Upgrade $http_upgrade;
+#       proxy_set_header Connection "upgrade";
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#     - http:
+#         paths:
+#           # App 1 — manufacturing-creator
+#           - path: /manufacturing-creator
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: manufacturing-creator-svc
+#                 port:
+#                   number: 8500
+
+#           # App 2 — multi-agent-manufacturing
+#           - path: /multi-agent-manufacturing
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: multi-agent-manufacturing-svc
+#                 port:
+#                   number: 8501
+
+#           # App 3 — main-app
+#           - path: /main-app
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: main-app-svc
+#                 port:
+#                   number: 8502
+
+
+
+
+
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: manufacturing-platform-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /manufacturing-creator(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: manufacturing-creator-svc
+                port:
+                  number: 8500
+
+          - path: /multi-agent-manufacturing(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: multi-agent-manufacturing-svc
+                port:
+                  number: 8501
+
+          - path: /main-app(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: main-app-svc
+                port:
+                  number: 8502
