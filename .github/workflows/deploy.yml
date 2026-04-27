@@ -70,3 +70,4 @@ jobs:
             kubectl rollout restart deployment manufacturing-creator
             kubectl rollout restart deployment multi-agent-manufacturing
             kubectl rollout restart deployment main-app
+            kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80 --address=0.0.0.0 &
