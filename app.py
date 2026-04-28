@@ -9,7 +9,7 @@ st.set_page_config(
 
 # ── Ports — change these to match your Docker/K8s service URLs ──
 MULTIMODAL_URL  = "http://65.0.232.208:8080/manufacturing-creator/"
-MULTIAGENT_URL  = "http://65.0.232.208:8080/multi-agent-manufacturing/"
+MULTIAGENT_URL  = "http://65.0.232.208:8080/multi-agent-manufacturing/"  
 
 st.markdown("""
 <style>
