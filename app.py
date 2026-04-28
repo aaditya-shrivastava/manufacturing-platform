@@ -126,7 +126,7 @@ with col2:
     <div class="tool-card">
         <div class="icon">🔍</div>
         <h3>Multi-Agent Research</h3>
-        <p>Describe your manufacturing needs and AI agents will research suppliers, pricing, and generate a full procurement report.</p>
+        <p>test Describe your manufacturing needs and AI agents will research suppliers, pricing, and generate a full procurement report.</p>
         <div class="tags">
             <span>CrewAI</span>
             <span>Llama 3.3</span>
