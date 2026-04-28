@@ -65,11 +65,11 @@ jobs:
             docker pull dockeruser2004/main-app:latest
             docker pull dockeruser2004/manufacturing-creator:latest
             docker pull dockeruser2004/multi-agent-manufacturing:latest
-            kubectl apply -f k8s/configmap-secrets.yaml
-            kubectl apply -f k8s/manufacturing-creator-deployment.yaml
-            kubectl apply -f k8s/multi-agent-manufacturing-deployment.yaml
-            kubectl apply -f k8s/main-app-deployment.yaml
-            kubectl apply -f k8s/ingress.yaml
+            kubectl apply -f ~/manufacturing-platform/configmap-secrets.yaml
+            kubectl apply -f ~/manufacturing-platform/manufacturing-creator-deployment.yaml
+            kubectl apply -f ~/manufacturing-platform/multi-agent-manufacturing-deployment.yaml
+            kubectl apply -f ~/manufacturing-platform/main-app-deployment.yaml
+            kubectl apply -f ~/manufacturing-platform/ingress.yaml
             kubectl rollout restart deployment/manufacturing-creator
             kubectl rollout restart deployment/multi-agent-manufacturing
             kubectl rollout restart deployment/main-app
