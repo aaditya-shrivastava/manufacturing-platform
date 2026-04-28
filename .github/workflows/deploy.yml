@@ -77,7 +77,3 @@ jobs:
             kubectl rollout status deployment/manufacturing-creator
             kubectl rollout status deployment/multi-agent-manufacturing
             kubectl rollout status deployment/main-app
-            pkill -f "port-forward" || true
-            sleep 2
-            nohup kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80 --address=0.0.0.0 > /tmp/pf.log 2>&1 &
-  
