@@ -76,10 +76,10 @@ jobs:
             kubectl apply -f ~/manufacturing-platform/k8s/main-app-deployment.yaml
             kubectl apply -f ~/manufacturing-platform/k8s/ingress.yaml
 
-            kubectl rollout restart deployment/manufacturing-creator:latest
-            kubectl rollout restart deployment/multi-agent-manufacturing:latest
-            kubectl rollout restart deployment/main-app:latest
+            kubectl rollout restart deployment/manufacturing-creator
+            kubectl rollout restart deployment/multi-agent-manufacturing
+            kubectl rollout restart deployment/main-app
 
-            kubectl rollout status deployment/manufacturing-creator:latest
-            kubectl rollout status deployment/multi-agent-manufacturing:latest
-            kubectl rollout status deployment/main-app:latest
+            kubectl rollout status deployment/manufacturing-creator
+            kubectl rollout status deployment/multi-agent-manufacturing
+            kubectl rollout status deployment/main-app
