@@ -64,8 +64,6 @@ jobs:
             git pull origin main
 
             eval $(minikube docker-env)
-            docker ps -q | xargs docker stop || true
-            docker rmi $(docker images 'dockeruser2004/*' -q) --force || true
             docker pull dockeruser2004/main-app:latest
             docker pull dockeruser2004/manufacturing-creator:latest
             docker pull dockeruser2004/multi-agent-manufacturing:latest
