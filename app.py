@@ -97,7 +97,7 @@ st.markdown("""
 
 
 # ── Header ────────────────────────────────────────────────────────────────────
-st.markdown('<div style="text-align:center"><span class="badge">·&nbsp; Datagami &nbsp;·&nbsp; Group 12D1</span></div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align:center"><span class="badge"> Datagami &nbsp;·&nbsp; Group 12D1</span></div>', unsafe_allow_html=True)
 st.markdown('<div class="main-title">🏭 Manufacturing AI Platform</div>', unsafe_allow_html=True)
 st.markdown('<div class="main-sub">Select a tool to get started</div>', unsafe_allow_html=True)
 
