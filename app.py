@@ -119,7 +119,7 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
-    st.link_button("Open Multimodal Creator →", MULTIMODAL_URL, use_container_width=True)
+    st.link_button("Open Multimodal Creator →", MULTIMODAL_URL, use_container_width=True, key="multimodal_creator")
 
 with col2:
     st.markdown("""
@@ -135,7 +135,7 @@ with col2:
     </div>
     """, unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
-    st.link_button("Open Multi-Agent Research →", MULTIAGENT_URL, use_container_width=True)
+    st.link_button("Open Multi-Agent Research →", MULTIAGENT_URL, use_container_width=True, key="multi_agent_research")
 
 
 # ── Footer ────────────────────────────────────────────────────────────────────
