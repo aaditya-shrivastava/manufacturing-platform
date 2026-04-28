@@ -77,7 +77,3 @@ jobs:
             kubectl rollout restart deployment/manufacturing-creator
             kubectl rollout restart deployment/multi-agent-manufacturing
             kubectl rollout restart deployment/main-app
-
-            kubectl rollout status deployment/manufacturing-creator
-            kubectl rollout status deployment/multi-agent-manufacturing
-            kubectl rollout status deployment/main-app
