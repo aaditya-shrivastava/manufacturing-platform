@@ -61,12 +61,23 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             eval $(minikube docker-env)
+            docker rmi $(docker images 'dockeruser2004/*' -q) --force || true
             docker pull dockeruser2004/main-app:latest
             docker pull dockeruser2004/manufacturing-creator:latest
             docker pull dockeruser2004/multi-agent-manufacturing:latest
-            kubectl rollout restart deployment/main-app
+            kubectl apply -f k8s/configmap-secrets.yaml
+            kubectl apply -f k8s/manufacturing-creator-deployment.yaml
+            kubectl apply -f k8s/multi-agent-manufacturing-deployment.yaml
+            kubectl apply -f k8s/main-app-deployment.yaml
+            kubectl apply -f k8s/ingress.yaml
             kubectl rollout restart deployment/manufacturing-creator
             kubectl rollout restart deployment/multi-agent-manufacturing
-            kubectl rollout status deployment/main-app
+            kubectl rollout restart deployment/main-app
+            # Wait until all pods are fully Running before marking deploy success
             kubectl rollout status deployment/manufacturing-creator
             kubectl rollout status deployment/multi-agent-manufacturing
+            kubectl rollout status deployment/main-app
+            pkill -f "port-forward" || true
+            sleep 2
+            nohup kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 8080:80 --address=0.0.0.0 > /tmp/pf.log 2>&1 &
+  
